@@ -6,7 +6,7 @@ class ContaEspecial: public Conta {
     private:
         double limiteCredito;
     public:
-        void debitar(int valor); // ex 1
+        void debitar(double valor); // ex 1
         ContaEspecial(string num, string ag, double limite):Conta(num,ag) {
             limiteCredito = limite;
         }

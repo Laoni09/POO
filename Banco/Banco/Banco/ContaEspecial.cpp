@@ -1,7 +1,6 @@
 #include "ContaEspecial.h"
 
-void ContaEspecial::debitar(int valor) {
-
+void ContaEspecial::debitar(double valor) {
     if (valor <= (getSaldo()+limiteCredito))
         setSaldo(getSaldo() - valor);
 }

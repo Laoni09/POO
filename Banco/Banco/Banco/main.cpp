@@ -32,7 +32,13 @@ int main()
     cout << "Poupanca " <<p->getNumero()<<" tem saldo = " <<p->getSaldo()<<" reais"<< endl;
     ContaVIP* cVIP = new ContaVIP("1235-6","456-7",60000);
 
-    // ex2
+    // ex1 - polimorfismo por substituição
+    Conta* conta1 = new ContaEspecial("1234-5", "456-7", 5000);
+    conta1->debitar(200);
+    cout << conta1->getSaldo() << endl;
+    delete conta1;
+
+    // ex2 - cast dinâmico
     Conta* c2 = new ContaVIP("1235-6", "456-7", 60000);
     c2->creditar(7000);
     (dynamic_cast<ContaVIP*>(c2))->renderBonus();
@@ -40,6 +46,21 @@ int main()
     cout << "Conta VIP " <<c2->getNumero()<<" tem saldo = " <<c2->getSaldo()<<" reais"<< endl;
     (dynamic_cast<ContaVIP*>(c2))->renderBonus();
     cout << "Conta VIP " <<c2->getNumero()<<" tem saldo = " <<c2->getSaldo()<<" reais"<< endl;
+    delete c2;
+
+    // ex3 - polimorfismo por redefinição
+    Conta* conta3 = new ContaVIP("1235-6", "456-7", 60000);
+    conta3->creditar(6000);
+    cout << conta3->getSaldo() << endl;
+    delete conta3;
+
+    // ex4 - uso do this
+    ContaEspecial ce2("1235-7","456-7",1000);
+    Conta conta = ce2;
+    conta.debitar(700);
+    cout << "Conta Especial " <<conta.getNumero()<<" tem saldo = " <<conta.getSaldo()<<" reais"<< endl;
+    ce2.compararSaldo(2000);
+    return 0;
 
   BancoD* banco = new BancoD(20);
     banco->cadastrar(c);
@@ -76,12 +97,4 @@ int main()
 
 */
 
-
-
-    ContaEspecial ce2("1235-7","456-7",1000);
-    Conta conta = ce2;
-    conta.debitar(700);
-    cout << "Conta Especial " <<conta.getNumero()<<" tem saldo = " <<conta.getSaldo()<<" reais"<< endl;
-    ce2.compararSaldo(2000);
-    return 0;
 }

@@ -13,7 +13,7 @@ class ContaVIP : public Conta
         void SetsaldoMinimo(double val) { saldoMinimo = val; }
         void renderBonus();
         // ex3
-        void creditar(double valor);
+        void creditar(double valor) override;
     protected:
     private:
         double saldoMinimo;
